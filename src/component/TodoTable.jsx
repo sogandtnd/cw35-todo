@@ -1,7 +1,15 @@
-import { AiFillDelete } from "react-icons/ai";
-import { AiFillEdit } from "react-icons/ai";
-import { BsFillEyeSlashFill } from "react-icons/bs";
+import { useEffect } from "react";
+
+import { useDispatch, useSelector } from "react-redux";
+import { fetchTodos } from "../redux/slices/todoSlice";
+import TodoTr from "./TodoTr";
 const TodoTable = () => {
+  const dispatch = useDispatch();
+  const { todoData } = useSelector((state) => state.todo);
+
+  useEffect(() => {
+    dispatch(fetchTodos());
+  }, [dispatch]);
   return (
     <table class="table table-striped">
       <thead>
@@ -12,17 +20,9 @@ const TodoTable = () => {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>July</td>
-          <td>Dooley</td>
-          <td>
-            <div className="d-flex flex-row gap-2">
-              <AiFillDelete />
-              <BsFillEyeSlashFill />
-              <AiFillEdit />
-            </div>
-          </td>
-        </tr>
+        {todoData.map((item) => (
+          <TodoTr item={item} />
+        ))}
       </tbody>
     </table>
   );
