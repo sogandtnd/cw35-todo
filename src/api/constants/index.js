@@ -1,4 +1,4 @@
 import axios from "axios";
-export const Base_URL = "https://jsonplaceholder.typicode.com";
+export const BASE_URL = "https://jsonplaceholder.typicode.com";
 
-export const instance = axios.create({ Base_URL, timeout: 8000 });
+export const instance = axios.create({ baseURL: BASE_URL, timeout: 80000 });

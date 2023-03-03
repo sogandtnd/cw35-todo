@@ -1,12 +1,12 @@
+import { Route } from "react-router-dom";
 import "./App.css";
-import Header from "./component/Header";
-import TodoTable from "./component/TodoTable";
+
+import { ProjectRoute } from "./route/route";
 
 function App() {
   return (
     <div>
-      <Header />
-      <TodoTable />
+      <ProjectRoute />
     </div>
   );
 }
